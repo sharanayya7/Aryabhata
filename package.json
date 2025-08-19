@@ -6,7 +6,7 @@
   "homepage": "https://sharanayya7.github.io/Aryabhata",
   "scripts": {
     "dev": "vite",
-    "build": "vite build",
+    "build": "vite build && cp public/CNAME dist/",
     "preview": "vite preview",
     "predeploy": "npm run build",
     "deploy": "gh-pages -d dist"
