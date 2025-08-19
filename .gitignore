@@ -1,0 +1,9 @@
+# Environment variables
+.env
+.env*.local
+
+# Build output
+/dist
+
+# Node
+/node_modules

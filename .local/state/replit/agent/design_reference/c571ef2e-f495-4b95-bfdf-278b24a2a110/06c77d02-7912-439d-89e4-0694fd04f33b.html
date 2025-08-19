@@ -1,0 +1,692 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UPSC Prep Hub - Your Path to Success</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <script>
+    tailwind.config = {
+        theme: {
+            extend: {
+                fontFamily: {
+                    'sans': ['Inter', 'sans-serif'],
+                },
+                colors: {
+                    primary: {
+                        50: '#E3F2FD',
+                        100: '#BBDEFB', 
+                        500: '#1565C0',
+                        600: '#1E88E5',
+                        700: '#1976D2',
+                        900: '#0D47A1'
+                    },
+                    secondary: {
+                        50: '#FFF3E0',
+                        100: '#FFE0B2',
+                        500: '#FF7043',
+                        600: '#FF5722'
+                    }
+                },
+                boxShadow: {
+                    'material': '0 2px 4px rgba(0,0,0,0.1), 0 8px 16px rgba(0,0,0,0.1)',
+                    'material-lg': '0 4px 8px rgba(0,0,0,0.12), 0 16px 32px rgba(0,0,0,0.12)'
+                }
+            }
+        }
+    };
+    </script>
+</head>
+<body class="bg-gray-50 font-sans">
+    <!-- @COMPONENT: AppShell [main navigation and layout container] -->
+    
+    <!-- Top Navigation -->
+    <!-- @COMPONENT: TopNavigation [desktop header with search and user menu] -->
+    <nav class="bg-white shadow-sm border-b border-gray-200 hidden md:block">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <div class="flex items-center space-x-8">
+                    <div class="flex-shrink-0">
+                        <h1 class="text-2xl font-bold text-primary-700">UPSC Prep Hub</h1>
+                    </div>
+                    <div class="hidden md:block">
+                        <div class="ml-10 flex items-baseline space-x-4">
+                            <a href="#" class="text-primary-600 hover:text-primary-700 px-3 py-2 rounded-md text-sm font-medium border-b-2 border-primary-600">Current Affairs</a>
+                            <a href="#" class="text-gray-700 hover:text-primary-600 px-3 py-2 rounded-md text-sm font-medium">Syllabus</a>
+                            <a href="#" class="text-gray-700 hover:text-primary-600 px-3 py-2 rounded-md text-sm font-medium">Practice Tests</a>
+                            <a href="#" class="text-gray-700 hover:text-primary-600 px-3 py-2 rounded-md text-sm font-medium">My Progress</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="flex items-center space-x-4">
+                    <!-- @FUNCTIONALITY: Global search with autocomplete for articles, syllabus topics, and questions -->
+                    <div class="relative">
+                        <input type="text" placeholder="Search topics, articles..." class="w-64 pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent">
+                        <i class="fas fa-search absolute left-3 top-3 text-gray-400"></i>
+                    </div>
+                    <!-- @STATE: isNotificationOpen:boolean = false -->
+                    <button class="relative p-2 text-gray-600 hover:text-gray-900">
+                        <i class="fas fa-bell text-lg"></i>
+                        <span class="absolute -top-1 -right-1 h-5 w-5 bg-secondary-500 text-white text-xs rounded-full flex items-center justify-center">3</span>
+                    </button>
+                    <!-- @STATE: isUserMenuOpen:boolean = false -->
+                    <div class="relative">
+                        <button class="flex items-center space-x-2 text-gray-700 hover:text-gray-900">
+                            <div class="w-8 h-8 bg-primary-500 rounded-full flex items-center justify-center text-white text-sm font-medium">
+                                <span data-bind="user.initials">AS</span>
+                            </div>
+                            <span class="hidden lg:block text-sm font-medium" data-bind="user.firstName">Arjun</span>
+                            <i class="fas fa-chevron-down text-xs"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+    <!-- @END_COMPONENT: TopNavigation -->
+
+    <!-- Mobile Bottom Navigation -->
+    <!-- @COMPONENT: BottomNavigation [mobile navigation bar] -->
+    <nav class="md:hidden fixed bottom-0 left-0 right-0 bg-white border-t border-gray-200 z-50">
+        <div class="grid grid-cols-5 h-16">
+            <a href="#" class="flex flex-col items-center justify-center text-primary-600 bg-primary-50">
+                <i class="fas fa-newspaper text-lg mb-1"></i>
+                <span class="text-xs font-medium">News</span>
+            </a>
+            <a href="#" class="flex flex-col items-center justify-center text-gray-600 hover:text-primary-600">
+                <i class="fas fa-book text-lg mb-1"></i>
+                <span class="text-xs">Syllabus</span>
+            </a>
+            <a href="#" class="flex flex-col items-center justify-center text-gray-600 hover:text-primary-600">
+                <i class="fas fa-question-circle text-lg mb-1"></i>
+                <span class="text-xs">Practice</span>
+            </a>
+            <a href="#" class="flex flex-col items-center justify-center text-gray-600 hover:text-primary-600">
+                <i class="fas fa-chart-line text-lg mb-1"></i>
+                <span class="text-xs">Progress</span>
+            </a>
+            <a href="#" class="flex flex-col items-center justify-center text-gray-600 hover:text-primary-600">
+                <i class="fas fa-user text-lg mb-1"></i>
+                <span class="text-xs">Profile</span>
+            </a>
+        </div>
+    </nav>
+    <!-- @END_COMPONENT: BottomNavigation -->
+
+    <!-- Main Content -->
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 pb-20 md:pb-6">
+        
+        <!-- Mobile Header -->
+        <div class="md:hidden mb-6">
+            <div class="flex items-center justify-between mb-4">
+                <h1 class="text-2xl font-bold text-primary-700">UPSC Prep Hub</h1>
+                <div class="flex items-center space-x-3">
+                    <button class="p-2 text-gray-600">
+                        <i class="fas fa-search text-lg"></i>
+                    </button>
+                    <button class="relative p-2 text-gray-600">
+                        <i class="fas fa-bell text-lg"></i>
+                        <span class="absolute -top-1 -right-1 h-5 w-5 bg-secondary-500 text-white text-xs rounded-full flex items-center justify-center">3</span>
+                    </button>
+                </div>
+            </div>
+            
+            <!-- Mobile Search -->
+            <div class="relative mb-4">
+                <input type="text" placeholder="Search topics, articles..." class="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent">
+                <i class="fas fa-search absolute left-3 top-4 text-gray-400"></i>
+            </div>
+        </div>
+
+        <!-- Welcome Section -->
+        <!-- @COMPONENT: WelcomeSection [personalized greeting and quick stats] -->
+        <div class="bg-gradient-to-r from-primary-600 to-primary-700 rounded-xl shadow-material text-white p-6 mb-8">
+            <div class="flex items-center justify-between">
+                <div>
+                    <h2 class="text-xl md:text-2xl font-semibold mb-2">Good morning, <span data-bind="user.firstName">Arjun</span>! 👋</h2>
+                    <p class="text-primary-100 mb-4">Ready to continue your UPSC journey?</p>
+                    <div class="flex items-center space-x-6 text-sm">
+                        <div class="flex items-center space-x-2">
+                            <i class="fas fa-fire text-secondary-400"></i>
+                            <span data-bind="user.streakDays">15</span>
+                            <span class="text-primary-100">day streak</span>
+                        </div>
+                        <div class="flex items-center space-x-2">
+                            <i class="fas fa-clock text-secondary-400"></i>
+                            <span data-bind="user.studyTimeToday">2h 30m</span>
+                            <span class="text-primary-100">today</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="hidden md:block">
+                    <div class="w-24 h-24 bg-white bg-opacity-20 rounded-full flex items-center justify-center">
+                        <i class="fas fa-graduation-cap text-4xl text-white"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- @END_COMPONENT: WelcomeSection -->
+
+        <!-- Quick Actions -->
+        <!-- @COMPONENT: QuickActions [shortcut buttons for common tasks] -->
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
+            <!-- @FUNCTIONALITY: Navigate to daily quiz with current affairs focus -->
+            <button class="bg-white rounded-lg shadow-material p-4 hover:shadow-material-lg transition-shadow text-center">
+                <div class="w-12 h-12 bg-secondary-100 rounded-lg flex items-center justify-center mx-auto mb-3">
+                    <i class="fas fa-bolt text-secondary-600 text-xl"></i>
+                </div>
+                <h3 class="font-medium text-gray-900 mb-1">Daily Quiz</h3>
+                <p class="text-xs text-gray-600">5 questions ready</p>
+            </button>
+
+            <!-- @FUNCTIONALITY: Resume last study session -->
+            <button class="bg-white rounded-lg shadow-material p-4 hover:shadow-material-lg transition-shadow text-center">
+                <div class="w-12 h-12 bg-primary-100 rounded-lg flex items-center justify-center mx-auto mb-3">
+                    <i class="fas fa-play text-primary-600 text-xl"></i>
+                </div>
+                <h3 class="font-medium text-gray-900 mb-1">Continue</h3>
+                <p class="text-xs text-gray-600">Indian Polity</p>
+            </button>
+
+            <!-- @FUNCTIONALITY: Open bookmarked items -->
+            <button class="bg-white rounded-lg shadow-material p-4 hover:shadow-material-lg transition-shadow text-center">
+                <div class="w-12 h-12 bg-yellow-100 rounded-lg flex items-center justify-center mx-auto mb-3">
+                    <i class="fas fa-bookmark text-yellow-600 text-xl"></i>
+                </div>
+                <h3 class="font-medium text-gray-900 mb-1">Bookmarks</h3>
+                <p class="text-xs text-gray-600" data-bind="user.bookmarkCount">23 items</p>
+            </button>
+
+            <!-- @FUNCTIONALITY: Access personal notes -->
+            <button class="bg-white rounded-lg shadow-material p-4 hover:shadow-material-lg transition-shadow text-center">
+                <div class="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center mx-auto mb-3">
+                    <i class="fas fa-sticky-note text-green-600 text-xl"></i>
+                </div>
+                <h3 class="font-medium text-gray-900 mb-1">My Notes</h3>
+                <p class="text-xs text-gray-600" data-bind="user.notesCount">12 notes</p>
+            </button>
+        </div>
+        <!-- @END_COMPONENT: QuickActions -->
+
+        <!-- Current Affairs Section -->
+        <!-- @COMPONENT: CurrentAffairsSection [daily news feed with article tiles] -->
+        <section class="mb-8">
+            <div class="flex items-center justify-between mb-6">
+                <h2 class="text-xl md:text-2xl font-semibold text-gray-900">Today's Current Affairs</h2>
+                <a href="#" class="text-primary-600 hover:text-primary-700 text-sm font-medium flex items-center">
+                    View All <i class="fas fa-arrow-right ml-2"></i>
+                </a>
+            </div>
+
+            <!-- Featured Article -->
+            <div class="bg-white rounded-xl shadow-material overflow-hidden mb-6">
+                <!-- A newspaper headline with Indian government building in background -->
+                <img src="https://images.unsplash.com/photo-1586717791821-3f44a563fa4c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=400" alt="Government building representing policy news" class="w-full h-48 md:h-64 object-cover">
+                <div class="p-6">
+                    <div class="flex items-center space-x-2 mb-3">
+                        <span class="px-3 py-1 bg-secondary-100 text-secondary-700 rounded-full text-xs font-medium">FEATURED</span>
+                        <span class="px-3 py-1 bg-primary-100 text-primary-700 rounded-full text-xs font-medium">Indian Polity</span>
+                        <span class="text-gray-500 text-xs" data-bind="article.publishTime">2 hours ago</span>
+                    </div>
+                    <h3 class="text-lg md:text-xl font-semibold text-gray-900 mb-2" data-mock="true">New Amendment to Digital Personal Data Protection Act 2023: Key Changes</h3>
+                    <p class="text-gray-600 mb-4" data-mock="true">The government announced significant changes to data protection regulations affecting millions of citizens. Here's what UPSC aspirants need to know about the constitutional implications...</p>
+                    <div class="flex items-center justify-between">
+                        <div class="flex items-center space-x-4">
+                            <!-- @FUNCTIONALITY: Bookmark article -->
+                            <button class="flex items-center space-x-2 text-gray-600 hover:text-secondary-600">
+                                <i class="far fa-bookmark"></i>
+                                <span class="text-sm">Save</span>
+                            </button>
+                            <!-- @FUNCTIONALITY: Share article -->
+                            <button class="flex items-center space-x-2 text-gray-600 hover:text-primary-600">
+                                <i class="fas fa-share"></i>
+                                <span class="text-sm">Share</span>
+                            </button>
+                        </div>
+                        <button class="bg-primary-600 hover:bg-primary-700 text-white px-4 py-2 rounded-lg text-sm font-medium transition-colors">
+                            Read Full Article
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Article Grid -->
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- @MAP: currentAffairs.map(article => ( -->
+                
+                <!-- Article 1 -->
+                <article class="bg-white rounded-lg shadow-material overflow-hidden hover:shadow-material-lg transition-shadow">
+                    <!-- An image of Indian economy symbols like rupee and financial charts -->
+                    <img src="https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=200" alt="Indian rupee and economic indicators" class="w-full h-32 object-cover">
+                    <div class="p-4">
+                        <div class="flex items-center space-x-2 mb-2">
+                            <span class="px-2 py-1 bg-green-100 text-green-700 rounded-full text-xs font-medium">Economy</span>
+                            <span class="text-gray-500 text-xs" data-bind="article.publishTime">4 hours ago</span>
+                        </div>
+                        <h3 class="font-semibold text-gray-900 mb-2 text-sm" data-mock="true">RBI Monetary Policy: Repo Rate Unchanged at 6.5%</h3>
+                        <p class="text-gray-600 text-xs mb-3 line-clamp-2" data-mock="true">The Reserve Bank of India maintains status quo on key policy rates, citing inflation concerns and global economic uncertainties...</p>
+                        <div class="flex items-center justify-between">
+                            <div class="flex items-center space-x-2">
+                                <button class="text-gray-400 hover:text-secondary-600">
+                                    <i class="far fa-bookmark text-sm"></i>
+                                </button>
+                                <span class="text-gray-500 text-xs">2 min read</span>
+                            </div>
+                            <button class="text-primary-600 hover:text-primary-700 text-xs font-medium">Read More</button>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Article 2 -->
+                <article class="bg-white rounded-lg shadow-material overflow-hidden hover:shadow-material-lg transition-shadow">
+                    <!-- A photo of renewable energy infrastructure like solar panels -->
+                    <img src="https://images.unsplash.com/photo-1509391366360-2e959784a276?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=200" alt="Solar panels representing renewable energy" class="w-full h-32 object-cover">
+                    <div class="p-4">
+                        <div class="flex items-center space-x-2 mb-2">
+                            <span class="px-2 py-1 bg-blue-100 text-blue-700 rounded-full text-xs font-medium">Environment</span>
+                            <span class="text-gray-500 text-xs" data-bind="article.publishTime">6 hours ago</span>
+                        </div>
+                        <h3 class="font-semibold text-gray-900 mb-2 text-sm" data-mock="true">India's Green Hydrogen Mission: 2030 Targets Announced</h3>
+                        <p class="text-gray-600 text-xs mb-3 line-clamp-2" data-mock="true">Government unveils comprehensive roadmap for green hydrogen production, aiming to make India a global hub for clean energy...</p>
+                        <div class="flex items-center justify-between">
+                            <div class="flex items-center space-x-2">
+                                <button class="text-secondary-600">
+                                    <i class="fas fa-bookmark text-sm"></i>
+                                </button>
+                                <span class="text-gray-500 text-xs">3 min read</span>
+                            </div>
+                            <button class="text-primary-600 hover:text-primary-700 text-xs font-medium">Read More</button>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Article 3 -->
+                <article class="bg-white rounded-lg shadow-material overflow-hidden hover:shadow-material-lg transition-shadow">
+                    <!-- A photo of satellite or space technology representing India's space program -->
+                    <img src="https://images.unsplash.com/photo-1446776653964-20c1d3a81b06?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=200" alt="Satellite in space representing India's space program" class="w-full h-32 object-cover">
+                    <div class="p-4">
+                        <div class="flex items-center space-x-2 mb-2">
+                            <span class="px-2 py-1 bg-purple-100 text-purple-700 rounded-full text-xs font-medium">Science & Tech</span>
+                            <span class="text-gray-500 text-xs" data-bind="article.publishTime">8 hours ago</span>
+                        </div>
+                        <h3 class="font-semibold text-gray-900 mb-2 text-sm" data-mock="true">ISRO Successfully Launches PSLV-C57: Earth Observation Satellite</h3>
+                        <p class="text-gray-600 text-xs mb-3 line-clamp-2" data-mock="true">Latest mission strengthens India's space capabilities with advanced Earth monitoring technology for climate and disaster management...</p>
+                        <div class="flex items-center justify-between">
+                            <div class="flex items-center space-x-2">
+                                <button class="text-gray-400 hover:text-secondary-600">
+                                    <i class="far fa-bookmark text-sm"></i>
+                                </button>
+                                <span class="text-gray-500 text-xs">4 min read</span>
+                            </div>
+                            <button class="text-primary-600 hover:text-primary-700 text-xs font-medium">Read More</button>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- @END_MAP )) -->
+            </div>
+        </section>
+        <!-- @END_COMPONENT: CurrentAffairsSection -->
+
+        <!-- Study Progress & Quick Practice -->
+        <div class="grid lg:grid-cols-3 gap-8 mb-8">
+            
+            <!-- Study Progress -->
+            <!-- @COMPONENT: StudyProgressCard [weekly progress visualization] -->
+            <div class="lg:col-span-2">
+                <div class="bg-white rounded-xl shadow-material p-6">
+                    <div class="flex items-center justify-between mb-6">
+                        <h3 class="text-lg font-semibold text-gray-900">This Week's Progress</h3>
+                        <button class="text-primary-600 hover:text-primary-700 text-sm font-medium">View Details</button>
+                    </div>
+                    
+                    <!-- Progress Stats -->
+                    <div class="grid grid-cols-3 gap-4 mb-6">
+                        <div class="text-center">
+                            <div class="text-2xl font-bold text-primary-600" data-bind="progress.questionsAttempted">247</div>
+                            <div class="text-xs text-gray-600">Questions</div>
+                        </div>
+                        <div class="text-center">
+                            <div class="text-2xl font-bold text-green-600" data-bind="progress.accuracy">78%</div>
+                            <div class="text-xs text-gray-600">Accuracy</div>
+                        </div>
+                        <div class="text-center">
+                            <div class="text-2xl font-bold text-secondary-600" data-bind="progress.studyHours">18h</div>
+                            <div class="text-xs text-gray-600">Study Time</div>
+                        </div>
+                    </div>
+
+                    <!-- Subject-wise Progress -->
+                    <div class="space-y-4">
+                        <div>
+                            <div class="flex justify-between text-sm mb-2">
+                                <span class="text-gray-700 font-medium">Indian Polity</span>
+                                <span class="text-gray-600">85%</span>
+                            </div>
+                            <div class="w-full bg-gray-200 rounded-full h-2">
+                                <div class="bg-primary-600 h-2 rounded-full" style="width: 85%"></div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between text-sm mb-2">
+                                <span class="text-gray-700 font-medium">Modern History</span>
+                                <span class="text-gray-600">72%</span>
+                            </div>
+                            <div class="w-full bg-gray-200 rounded-full h-2">
+                                <div class="bg-green-500 h-2 rounded-full" style="width: 72%"></div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between text-sm mb-2">
+                                <span class="text-gray-700 font-medium">Geography</span>
+                                <span class="text-gray-600">68%</span>
+                            </div>
+                            <div class="w-full bg-gray-200 rounded-full h-2">
+                                <div class="bg-yellow-500 h-2 rounded-full" style="width: 68%"></div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between text-sm mb-2">
+                                <span class="text-gray-700 font-medium">Economics</span>
+                                <span class="text-gray-600">58%</span>
+                            </div>
+                            <div class="w-full bg-gray-200 rounded-full h-2">
+                                <div class="bg-red-500 h-2 rounded-full" style="width: 58%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- @END_COMPONENT: StudyProgressCard -->
+
+            <!-- Quick Practice -->
+            <!-- @COMPONENT: QuickPracticeCard [rapid quiz access with difficulty selection] -->
+            <div>
+                <div class="bg-white rounded-xl shadow-material p-6">
+                    <h3 class="text-lg font-semibold text-gray-900 mb-4">Quick Practice</h3>
+                    
+                    <!-- Difficulty Selection -->
+                    <div class="flex space-x-2 mb-4">
+                        <button class="flex-1 bg-primary-600 text-white py-2 px-3 rounded-lg text-sm font-medium">Basic</button>
+                        <button class="flex-1 bg-gray-200 text-gray-700 py-2 px-3 rounded-lg text-sm font-medium hover:bg-gray-300">Advanced</button>
+                        <button class="flex-1 bg-gray-200 text-gray-700 py-2 px-3 rounded-lg text-sm font-medium hover:bg-gray-300">Deep</button>
+                    </div>
+
+                    <!-- Subject Selection -->
+                    <div class="space-y-2 mb-6">
+                        <label class="flex items-center">
+                            <input type="checkbox" checked class="w-4 h-4 text-primary-600 border-gray-300 rounded focus:ring-primary-500">
+                            <span class="ml-3 text-sm text-gray-700">Current Affairs</span>
+                        </label>
+                        <label class="flex items-center">
+                            <input type="checkbox" class="w-4 h-4 text-primary-600 border-gray-300 rounded focus:ring-primary-500">
+                            <span class="ml-3 text-sm text-gray-700">Indian Polity</span>
+                        </label>
+                        <label class="flex items-center">
+                            <input type="checkbox" class="w-4 h-4 text-primary-600 border-gray-300 rounded focus:ring-primary-500">
+                            <span class="ml-3 text-sm text-gray-700">History</span>
+                        </label>
+                        <label class="flex items-center">
+                            <input type="checkbox" class="w-4 h-4 text-primary-600 border-gray-300 rounded focus:ring-primary-500">
+                            <span class="ml-3 text-sm text-gray-700">Geography</span>
+                        </label>
+                    </div>
+
+                    <!-- @FUNCTIONALITY: Start quiz with selected difficulty and subjects -->
+                    <button class="w-full bg-secondary-500 hover:bg-secondary-600 text-white py-3 rounded-lg font-medium transition-colors">
+                        Start 10-Question Quiz
+                    </button>
+
+                    <div class="mt-4 text-center">
+                        <p class="text-xs text-gray-600">Average time: 8 minutes</p>
+                    </div>
+                </div>
+            </div>
+            <!-- @END_COMPONENT: QuickPracticeCard -->
+        </div>
+
+        <!-- Recent Activity & Syllabus Preview -->
+        <div class="grid lg:grid-cols-2 gap-8">
+            
+            <!-- Recent Activity -->
+            <!-- @COMPONENT: RecentActivityCard [user's recent study activities] -->
+            <div class="bg-white rounded-xl shadow-material p-6">
+                <h3 class="text-lg font-semibold text-gray-900 mb-4">Recent Activity</h3>
+                <div class="space-y-4">
+                    <!-- @MAP: recentActivities.map(activity => ( -->
+                    
+                    <div class="flex items-start space-x-3">
+                        <div class="w-8 h-8 bg-green-100 rounded-full flex items-center justify-center flex-shrink-0 mt-1">
+                            <i class="fas fa-check text-green-600 text-sm"></i>
+                        </div>
+                        <div class="flex-1">
+                            <p class="text-sm text-gray-900" data-mock="true">Completed <span class="font-medium">Modern History Quiz</span></p>
+                            <p class="text-xs text-gray-600">Score: 8/10 • 2 hours ago</p>
+                        </div>
+                    </div>
+
+                    <div class="flex items-start space-x-3">
+                        <div class="w-8 h-8 bg-blue-100 rounded-full flex items-center justify-center flex-shrink-0 mt-1">
+                            <i class="fas fa-bookmark text-blue-600 text-sm"></i>
+                        </div>
+                        <div class="flex-1">
+                            <p class="text-sm text-gray-900" data-mock="true">Bookmarked article <span class="font-medium">"Constitutional Amendments"</span></p>
+                            <p class="text-xs text-gray-600">4 hours ago</p>
+                        </div>
+                    </div>
+
+                    <div class="flex items-start space-x-3">
+                        <div class="w-8 h-8 bg-purple-100 rounded-full flex items-center justify-center flex-shrink-0 mt-1">
+                            <i class="fas fa-sticky-note text-purple-600 text-sm"></i>
+                        </div>
+                        <div class="flex-1">
+                            <p class="text-sm text-gray-900" data-mock="true">Added note to <span class="font-medium">Indian Economy - GDP</span></p>
+                            <p class="text-xs text-gray-600">Yesterday</p>
+                        </div>
+                    </div>
+
+                    <div class="flex items-start space-x-3">
+                        <div class="w-8 h-8 bg-yellow-100 rounded-full flex items-center justify-center flex-shrink-0 mt-1">
+                            <i class="fas fa-clock text-yellow-600 text-sm"></i>
+                        </div>
+                        <div class="flex-1">
+                            <p class="text-sm text-gray-900" data-mock="true">Studied for <span class="font-medium">45 minutes</span> - Geography</p>
+                            <p class="text-xs text-gray-600">Yesterday</p>
+                        </div>
+                    </div>
+
+                    <!-- @END_MAP )) -->
+                </div>
+                <button class="w-full mt-4 text-primary-600 hover:text-primary-700 text-sm font-medium">View All Activity</button>
+            </div>
+            <!-- @END_COMPONENT: RecentActivityCard -->
+
+            <!-- Syllabus Quick Access -->
+            <!-- @COMPONENT: SyllabusQuickAccess [hierarchical syllabus navigation] -->
+            <div class="bg-white rounded-xl shadow-material p-6">
+                <div class="flex items-center justify-between mb-4">
+                    <h3 class="text-lg font-semibold text-gray-900">Syllabus Overview</h3>
+                    <button class="text-primary-600 hover:text-primary-700 text-sm font-medium">View All</button>
+                </div>
+                
+                <div class="space-y-3">
+                    <!-- @FUNCTIONALITY: Expand/collapse syllabus sections -->
+                    
+                    <!-- Indian Polity -->
+                    <div class="border border-gray-200 rounded-lg">
+                        <button class="w-full p-3 text-left flex items-center justify-between hover:bg-gray-50">
+                            <div class="flex items-center space-x-3">
+                                <div class="w-8 h-8 bg-primary-100 rounded-lg flex items-center justify-center">
+                                    <i class="fas fa-landmark text-primary-600 text-sm"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-medium text-gray-900">Indian Polity</h4>
+                                    <p class="text-xs text-gray-600">28/35 topics completed</p>
+                                </div>
+                            </div>
+                            <div class="text-right">
+                                <div class="text-sm font-medium text-green-600">80%</div>
+                                <i class="fas fa-chevron-down text-gray-400 text-xs mt-1"></i>
+                            </div>
+                        </button>
+                    </div>
+
+                    <!-- Modern History -->
+                    <div class="border border-gray-200 rounded-lg">
+                        <button class="w-full p-3 text-left flex items-center justify-between hover:bg-gray-50">
+                            <div class="flex items-center space-x-3">
+                                <div class="w-8 h-8 bg-yellow-100 rounded-lg flex items-center justify-center">
+                                    <i class="fas fa-scroll text-yellow-600 text-sm"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-medium text-gray-900">Modern History</h4>
+                                    <p class="text-xs text-gray-600">18/25 topics completed</p>
+                                </div>
+                            </div>
+                            <div class="text-right">
+                                <div class="text-sm font-medium text-yellow-600">72%</div>
+                                <i class="fas fa-chevron-down text-gray-400 text-xs mt-1"></i>
+                            </div>
+                        </button>
+                    </div>
+
+                    <!-- Geography -->
+                    <div class="border border-gray-200 rounded-lg">
+                        <button class="w-full p-3 text-left flex items-center justify-between hover:bg-gray-50">
+                            <div class="flex items-center space-x-3">
+                                <div class="w-8 h-8 bg-green-100 rounded-lg flex items-center justify-center">
+                                    <i class="fas fa-globe text-green-600 text-sm"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-medium text-gray-900">Geography</h4>
+                                    <p class="text-xs text-gray-600">15/22 topics completed</p>
+                                </div>
+                            </div>
+                            <div class="text-right">
+                                <div class="text-sm font-medium text-blue-600">68%</div>
+                                <i class="fas fa-chevron-down text-gray-400 text-xs mt-1"></i>
+                            </div>
+                        </button>
+                    </div>
+
+                    <!-- Economics -->
+                    <div class="border border-gray-200 rounded-lg">
+                        <button class="w-full p-3 text-left flex items-center justify-between hover:bg-gray-50">
+                            <div class="flex items-center space-x-3">
+                                <div class="w-8 h-8 bg-red-100 rounded-lg flex items-center justify-center">
+                                    <i class="fas fa-chart-line text-red-600 text-sm"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-medium text-gray-900">Economics</h4>
+                                    <p class="text-xs text-gray-600">12/20 topics completed</p>
+                                </div>
+                            </div>
+                            <div class="text-right">
+                                <div class="text-sm font-medium text-red-600">60%</div>
+                                <i class="fas fa-chevron-down text-gray-400 text-xs mt-1"></i>
+                            </div>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <!-- @END_COMPONENT: SyllabusQuickAccess -->
+        </div>
+    </main>
+    <!-- @END_COMPONENT: AppShell -->
+
+    <!-- Floating Action Button (Mobile) -->
+    <!-- @COMPONENT: FloatingActionButton [quick access to main actions on mobile] -->
+    <button class="md:hidden fixed bottom-20 right-4 w-14 h-14 bg-secondary-500 hover:bg-secondary-600 text-white rounded-full shadow-lg flex items-center justify-center z-40">
+        <i class="fas fa-plus text-xl"></i>
+    </button>
+    <!-- @END_COMPONENT: FloatingActionButton -->
+
+    <script>
+        // TODO: Implement business logic, API calls, or state management
+        (function() {
+            // Mobile menu toggle functionality
+            let isMobileMenuOpen = false;
+            
+            // Search functionality placeholder
+            const searchInputs = document.querySelectorAll('input[type="text"]');
+            searchInputs.forEach(input => {
+                input.addEventListener('focus', function() {
+                    this.parentElement.classList.add('ring-2', 'ring-primary-500');
+                });
+                
+                input.addEventListener('blur', function() {
+                    this.parentElement.classList.remove('ring-2', 'ring-primary-500');
+                });
+            });
+
+            // Bookmark functionality placeholder
+            const bookmarkButtons = document.querySelectorAll('button i.fa-bookmark');
+            bookmarkButtons.forEach(button => {
+                button.parentElement.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const icon = this.querySelector('i');
+                    if (icon.classList.contains('far')) {
+                        icon.classList.remove('far');
+                        icon.classList.add('fas');
+                        icon.classList.add('text-secondary-600');
+                    } else {
+                        icon.classList.remove('fas', 'text-secondary-600');
+                        icon.classList.add('far');
+                    }
+                });
+            });
+
+            // Syllabus accordion functionality
+            const syllabusButtons = document.querySelectorAll('.border button');
+            syllabusButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    const chevron = this.querySelector('.fa-chevron-down');
+                    if (chevron) {
+                        chevron.classList.toggle('rotate-180');
+                    }
+                });
+            });
+
+            // Difficulty selection
+            const difficultyButtons = document.querySelectorAll('.Quick.Practice button');
+            difficultyButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    // Remove active state from all buttons
+                    difficultyButtons.forEach(btn => {
+                        btn.classList.remove('bg-primary-600', 'text-white');
+                        btn.classList.add('bg-gray-200', 'text-gray-700');
+                    });
+                    
+                    // Add active state to clicked button
+                    this.classList.remove('bg-gray-200', 'text-gray-700');
+                    this.classList.add('bg-primary-600', 'text-white');
+                });
+            });
+
+            // Progress bar animation on scroll
+            const progressBars = document.querySelectorAll('.bg-primary-600, .bg-green-500, .bg-yellow-500, .bg-red-500');
+            const observerOptions = {
+                threshold: 0.5,
+                rootMargin: '0px 0px -50px 0px'
+            };
+
+            const progressObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.transform = 'scaleX(1)';
+                        entry.target.style.transformOrigin = 'left';
+                        entry.target.style.transition = 'transform 1s ease-out';
+                    }
+                });
+            }, observerOptions);
+
+            progressBars.forEach(bar => {
+                bar.style.transform = 'scaleX(0)';
+                progressObserver.observe(bar);
+            });
+        })();
+    </script>
+</body>
+</html>
