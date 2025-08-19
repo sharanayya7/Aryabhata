@@ -1,5 +1,5 @@
 import { useQuery } from "@tanstack/react-query";
-import { useAuth } from "@/hooks/useAuth";
+import { useAuth } from "@/hooks/use-auth";
 import { useEffect } from "react";
 import { useToast } from "@/hooks/use-toast";
 import { isUnauthorizedError } from "@/lib/authUtils";
@@ -11,7 +11,7 @@ import LoadingSpinner from "@/components/ui/loading-spinner";
 import { TrendingUp, BookOpen, Target, Clock, Calendar, Award } from "lucide-react";
 
 export default function ProgressPage() {
-  const { user, isLoading: authLoading } = useAuth();
+  const { user, logout } = useAuth();
   const { toast } = useToast();
 
   const { data: userProgress, isLoading: progressLoading, error: progressError } = useQuery({
@@ -43,20 +43,10 @@ export default function ProgressPage() {
           description: "You are logged out. Logging in again...",
           variant: "destructive",
         });
-        setTimeout(() => {
-          window.location.href = "/api/login";
-        }, 500);
+        logout();
       }
     });
   }, [progressError, attemptsError, activityError, toast]);
-
-  if (authLoading) {
-    return (
-      <div className="min-h-screen w-full flex items-center justify-center bg-gray-50">
-        <LoadingSpinner />
-      </div>
-    );
-  }
 
   const calculateStats = () => {
     if (!quizAttempts || quizAttempts.length === 0) {

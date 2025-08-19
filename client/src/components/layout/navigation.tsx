@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useAuth } from "@/hooks/useAuth";
+import { useAuth } from "@/hooks/use-auth";
 import { useLocation } from "wouter";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -54,7 +54,7 @@ export default function Navigation() {
                 className="text-2xl font-bold text-primary-700 hover:text-primary-800 transition-colors"
                 data-testid="button-logo"
               >
-                UPSC Prep Hub
+                UPSC Prep
               </button>
             </div>
             <div className="hidden md:block">

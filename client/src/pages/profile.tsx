@@ -1,5 +1,6 @@
 import { useState } from "react";
-import { useAuth } from "@/hooks/useAuth";
+import { useLocation } from "wouter";
+import { useAuth } from "@/hooks/use-auth";
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
 import { useToast } from "@/hooks/use-toast";
 import { isUnauthorizedError } from "@/lib/authUtils";
@@ -27,9 +28,10 @@ import {
 } from "lucide-react";
 
 export default function Profile() {
-  const { user, isLoading: authLoading } = useAuth();
+  const { user, logout } = useAuth();
   const { toast } = useToast();
   const queryClient = useQueryClient();
+  const [, setLocation] = useLocation();
   const [activeTab, setActiveTab] = useState<string>("overview");
 
   const { data: bookmarks, isLoading: bookmarksLoading } = useQuery({
@@ -53,16 +55,9 @@ export default function Profile() {
   });
 
   const handleLogout = () => {
-    window.location.href = "/api/logout";
+    logout();
+    setLocation("/login");
   };
-
-  if (authLoading) {
-    return (
-      <div className="min-h-screen w-full flex items-center justify-center bg-gray-50">
-        <LoadingSpinner />
-      </div>
-    );
-  }
 
   const calculateStats = () => {
     const totalQuizzes = quizAttempts?.length || 0;
