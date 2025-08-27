@@ -1,6 +1,6 @@
 # Overview
 
-UPSC Prep Hub is a comprehensive web application designed for UPSC Civil Services Examination preparation. The platform provides current affairs coverage, structured syllabus content, practice tests, and progress tracking to help aspirants prepare effectively for their IAS journey. The application features a modern, responsive interface with authentication via Replit's OIDC system.
+Aryabhata - AI Powered Solution for UPSC is a comprehensive web application designed for UPSC Civil Services Examination preparation. The platform provides current affairs coverage, structured syllabus content, practice tests, and progress tracking to help aspirants prepare effectively for their IAS journey. The application features a modern, responsive interface with authentication via Replit's OIDC system.
 
 # User Preferences
 
