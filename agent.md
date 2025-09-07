@@ -1,6 +1,6 @@
 # Overview
 
-Aryabhata - AI Powered Solution for UPSC is a comprehensive web application designed for UPSC Civil Services Examination preparation. The platform provides current affairs coverage, structured syllabus content, practice tests, and progress tracking to help aspirants prepare effectively for their IAS journey. The application features a modern, responsive interface with authentication via Replit's OIDC system.
+Aryabhata - AI Powered Solution for UPSC is a comprehensive web application designed for UPSC Civil Services Examination preparation. The platform provides current affairs coverage, structured syllabus content, practice tests, and progress tracking to help aspirants prepare effectively for their IAS journey. The application features a modern, responsive interface with authentication via Agent's OIDC system.
 
 # User Preferences
 
@@ -37,9 +37,9 @@ PostgreSQL database with a well-structured schema supporting the educational pla
 - **Session Storage**: Dedicated sessions table for user authentication
 
 ## Authentication & Authorization
-Implements Replit's OIDC (OpenID Connect) authentication system:
+Implements Agent's OIDC (OpenID Connect) authentication system:
 
-- **Authentication Provider**: Replit OIDC for seamless integration
+- **Authentication Provider**: Agent OIDC for seamless integration
 - **Session Management**: Server-side sessions with PostgreSQL storage
 - **Authorization**: Route-level protection with middleware-based authentication checks
 - **User Context**: Authenticated user information available across the application
@@ -72,12 +72,12 @@ RESTful API design with logical resource grouping:
 - **Utilities**: class-variance-authority for component variants, clsx for conditional classes
 
 ## Authentication & Session Management
-- **OIDC Provider**: Replit's OpenID Connect system for user authentication
+- **OIDC Provider**: Agent's OpenID Connect system for user authentication
 - **Session Storage**: connect-pg-simple for PostgreSQL-backed session management
 - **Passport Integration**: passport and openid-client for authentication flow
 
 ## Development & Production Tools
 - **Type Safety**: TypeScript with strict configuration and Zod for runtime validation
 - **Code Quality**: ESBuild for production bundling, PostCSS for CSS processing
-- **Development Experience**: Replit-specific plugins for error handling and debugging
+- **Development Experience**: Agent-specific plugins for error handling and debugging
 - **Environment**: WebSocket support via ws library for real-time features

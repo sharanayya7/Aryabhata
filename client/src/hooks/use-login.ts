@@ -8,7 +8,7 @@ const mockLoginUser = async (credentials: any) => {
   await new Promise(resolve => setTimeout(resolve, 500));
 
   if (
-    ['Sharan', 'Mahantesh', 'Sangamesh', 'SidduSir', 'Manjunath', 'Saakshi', 'Harsha', 'Rohit'].includes(credentials.username) &&
+    ['Sharan', 'Mahantesh', 'Sangamesh', 'SidduSir', 'Manjunath', 'Saakshi', 'Harsha', 'Rohit','Sachin', 'Umashree','Pallavi'].includes(credentials.username) &&
     credentials.password === 'Test@123'
   ) {
     // On success, return a mock user object.
